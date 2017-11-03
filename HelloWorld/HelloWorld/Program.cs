@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -11,7 +12,8 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(string.Format("Program Name: {0}{1}", ProgramName, Environment.NewLine));
+            Console.WriteLine(string.Format("Program Name: {0}", ProgramName));
+            Console.WriteLine(string.Format("Program Version: {0}{1}", ProgramVersion, Environment.NewLine));
 
             foreach (string arg in args)
             {
@@ -33,6 +35,18 @@ namespace HelloWorld
                     .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
                 return segments[0];
+            }
+        }
+
+        static string ProgramVersion
+        {
+            get
+            {
+                return Assembly
+                    .GetEntryAssembly()
+                    .GetName()
+                    .Version
+                    .ToString();
             }
         }
     }
