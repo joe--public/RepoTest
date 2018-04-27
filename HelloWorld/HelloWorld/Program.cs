@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace HelloWorld
 {
+    /// <summary>
+    /// summary comment.
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
